@@ -1,0 +1,6 @@
+Annotations/
+ImageSets/
+JPEGImages/
+trained_models/
+venv/
+**/__pycache__/
