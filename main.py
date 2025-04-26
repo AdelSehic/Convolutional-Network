@@ -31,20 +31,22 @@ build_model_func = md.build_model_n_label(n_labels)
 tuner = kt.Hyperband(
     build_model_func,
     objective='val_accuracy',
-    max_epochs=100,
+    max_epochs=30,
     directory='trained_models',
     project_name='IS_CNN_Classificator'
 )
 
 x_train, x_test, y_train, y_test = train_test_split(
-    normal_images, encoded_labels, test_size=33, random_state=42
+    normal_images, encoded_labels, test_size=0.2, random_state=42
 )
 
-tuner.search(x_train, y_train, epochs=60, validation_data=(x_test, y_test))
+tuner.search(x_train, y_train, epochs=20, validation_data=(x_test, y_test))
 
 best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
 
 print(f"Best Hyperparameters: {best_hps}")
 
 model = tuner.hypermodel.build(best_hps)
-history=model.fit(x_train, y_train, epochs=100, validation_data=(x_test, y_test))
+model.save('trained_models/IS_CNN_Classificator/best_model.keras')
+
+history=model.fit(x_train, y_train, epochs=30, validation_data=(x_test, y_test))
