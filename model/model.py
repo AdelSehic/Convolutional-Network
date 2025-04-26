@@ -1,18 +1,8 @@
-# Required packages
-# import pandas as pd
-# import numpy as np
 import os
-# import xml.etree.ElementTree as ET
-# from colorama import Fore, Back, Style
-# import random
-# from sklearn.model_selection import train_test_split
-# import matplotlib.pyplot as plt
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-# import itertools
-# from sklearn.preprocessing import OneHotEncoder
 import keras_tuner as kt
 from PIL import Image, ImageDraw
 import utils as ut

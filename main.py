@@ -9,22 +9,10 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 # Required packages
-# import pandas as pd
-# import numpy as np
 import os
-# import xml.etree.ElementTree as ET
-# from colorama import Fore, Back, Style
-# import random
 from sklearn.model_selection import train_test_split
-# import matplotlib.pyplot as plt
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-# import tensorflow as tf
-# from tensorflow import keras
-# from tensorflow.keras import layers
-# import itertools
-# from sklearn.preprocessing import OneHotEncoder
 import keras_tuner as kt
-# from PIL import Image, ImageDraw
 import utils as ut
 import model as md
 
@@ -56,26 +44,7 @@ tuner.search(x_train, y_train, epochs=60, validation_data=(x_test, y_test))
 
 best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
 
-printf(f"Best Hyperparameters: {best_hps}")
+print(f"Best Hyperparameters: {best_hps}")
 
 model = tuner.hypermodel.build(best_hps)
 history=model.fit(x_train, y_train, epochs=100, validation_data=(x_test, y_test))
-
-# fix, (ax0, ax1, ax2) = plt.subplots(1, 3, figsize=(10, 3))
-# ax0.imshow(normal_images[0], cmap='gray')
-# ax1.imshow(normal_images[30], cmap='gray')
-# ax2.imshow(normal_images[20], cmap='gray')
-#
-# plt.show()
-
-# image = data[0][0]
-# bbox = data[0][1]
-# draw = ImageDraw.Draw(image)
-# for obj in bbox:
-#     name = obj.name
-#     bounding_box = obj.bbox
-#     xmin, ymin, xmax, ymax = bounding_box.xmin, bounding_box.ymin, bounding_box.xmax, bounding_box.ymax
-#     draw.rectangle([xmin, ymin, xmax, ymax], outline='red')
-#     draw.text((xmin, ymin), name, fill='red')
-#
-# image.show()
