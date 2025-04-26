@@ -37,7 +37,7 @@ tuner = kt.Hyperband(
 )
 
 x_train, x_test, y_train, y_test = train_test_split(
-    normal_images, encoded_labels, test_size=0.2, random_state=42
+    normal_images, encoded_labels, test_size=0.33, random_state=42
 )
 
 tuner.search(x_train, y_train, epochs=20, validation_data=(x_test, y_test))
@@ -50,3 +50,34 @@ model = tuner.hypermodel.build(best_hps)
 model.save('trained_models/IS_CNN_Classificator/best_model.keras')
 
 history=model.fit(x_train, y_train, epochs=30, validation_data=(x_test, y_test))
+
+## TEST THE MODEL ##
+loss, accuracy = model.evaluate(x_test, y_test)
+
+from tensorflow.keras.utils import plot_model, model_to_dot
+plot_model(model,to_file='basic_model.png')
+from IPython.display import SVG
+SVG(model_to_dot(model).create(prog='dot',format='svg'))
+
+model.summary()
+print(f"Test Loss: {loss}")
+print(f"Test Accuracy: {accuracy}")
+
+import matplotlib.pyplot as plt
+
+# Plot the performance of the model
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('Model loss')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Validation'], loc='upper right')
+plt.show()
+
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('Model accuracy')
+plt.ylabel('Accuracy')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Validation'], loc='lower right')
+plt.show()
