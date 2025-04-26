@@ -35,10 +35,10 @@ def extract_objects(data: tuple[Image.Image, list[Annotation]]) -> list[tuple[Im
 
 def encode_labels(labels):
     flattened_labels = list(itertools.chain(*labels))
-    flattened_labels_np = np.array(labels).reshape(-1, 1)
-
+    flattened_labels_np = np.array(labels)
     encoder = OneHotEncoder(sparse_output=False)
-    encoded_labels = encoder.fit_transform(flattened_labels_np)
+    encoded_labels = encoder.fit_transform(flattened_labels_np.reshape(-1, 1)
+)
 
     return encoded_labels, flattened_labels_np
 

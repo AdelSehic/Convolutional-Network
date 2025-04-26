@@ -28,6 +28,8 @@ data = ut.load_train_data(data_dir, data_set)
 normal_images, encoded_labels, encoded_labels_np = ut.preprocess_data(data)
 del data
 
+ut.translate_labels(encoded_labels_np)
+
 test_data = ut.load_train_data(data_dir, test_set)
 nm_test, encd_test, _ = ut.preprocess_data(test_data)
 del test_data

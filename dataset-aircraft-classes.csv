@@ -1,0 +1,21 @@
+CLASS,NAME,ROLE,NATION
+A1,SU-35,Fighter,Russian
+A2,C-130 Hercules,Air lift/Combat Support,American
+A3,C-17 Globemaster,Strategic Operations,American
+A4,C-5 Galaxy,Strategic Operations,American
+A5,F-4 Phantom,Fighter,American
+A6,TU-160,Heavy Bomber,Russian
+A7,E-3 Sentry,Strategic Operations,American
+A8,KC-135 Stratotanker,Strategic Operations,American
+A9,C-130 Variant(?),Strategic Operations,American
+A10,F-111,Heavy Bomber,American
+A11,E-8C,Strategic Operations,American
+A12,MiG-27,Fighter/Bomber,Russian
+A13,F-15E Strike Eagle,Fighter,American
+A14,Airbus,Strategic Operations,American
+A15,F-35,Fighter,American
+A16,F/A-18,Fighter,American
+A17,TU-95,Heavy Bomber,Russian
+A18,Boeing 747,Transport,American
+A19,SU-27,Fighter,Russian
+A20,SU-24,Fighter,Russian
